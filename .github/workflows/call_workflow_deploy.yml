@@ -1,0 +1,33 @@
+name: call-workflow-deploy
+
+on:
+  # Allows you to run this workflow manually from the Action tab
+  workflow_dispatch:
+    inputs:
+      ref:
+        type: string
+        description: Branch/Tag name
+        required: true
+      environment:
+        type: choice
+        description: Target Environment
+        options:
+         - dev
+         - sit
+         - uat
+        required: true
+      baseline_no:
+        type: string
+        description: Deployment Baseline Number
+        default: ''
+
+jobs:
+  call-devops-workflow:
+    name: Call DevOps Workflow
+    uses: Torpainai-ACN/https://github.com/Torpainai-ACN/814--devsecops--deployment-pipeline.git@main
+    with:
+      repository: ${{ github.repository }}
+      ref: ${{ inputs.ref }}
+      environment: ${{ inputs.environment }}
+      baseline_no: ${{ inputs.baseline_no }}
+    secrets: inherit

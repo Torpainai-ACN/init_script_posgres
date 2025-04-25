@@ -1,0 +1,6 @@
+scripts:
+  schema:
+    - path: ddl/schema/*.sql
+  table:
+    - path: ddl/table/*.sql
+    
