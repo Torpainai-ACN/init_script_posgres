@@ -24,7 +24,7 @@ on:
 jobs:
   call-devops-workflow:
     name: Call DevOps Workflow
-    uses: Torpainai-ACN/https://github.com/Torpainai-ACN/814--devsecops--deployment-pipeline.git@main
+    uses: Torpainai-ACN/814--devsecops--deployment-pipeline/.github/workflows/reusable-workflow-init-postgres-deployment.yml@main
     with:
       repository: ${{ github.repository }}
       ref: ${{ inputs.ref }}
